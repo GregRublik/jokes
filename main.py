@@ -12,9 +12,20 @@ dp = Dispatcher()
 
 @dp.message(Command('off'))
 async def command_start_handler(message: Message) -> None:
-    await message.answer(f"Windows off through 1 min.")
-    print('Компьютер будет выключен через 1 минуту!')
+    await message.answer(f"Windows off")
     os.system("shutdown /s /t 60")
+
+
+@dp.message(Command('reboot'))
+async def command_start_handler(message: Message) -> None:
+    await message.answer(f"Windows reboot")
+    os.system("shutdown /r /t 60")
+
+
+@dp.message(Command('cancel'))
+async def command_start_handler(message: Message) -> None:
+    await message.answer(f"Windows reboot")
+    os.system("shutdown /a")
 
 
 async def main() -> None:
